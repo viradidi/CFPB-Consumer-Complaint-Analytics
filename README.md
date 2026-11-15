@@ -4,7 +4,7 @@ An end-to-end data engineering and analytics project built with Microsoft Fabric
 
 The project follows the complete journey from raw CSV ingestion to a Power BI report, including data quality checks, category standardization, dimensional modeling, pipeline orchestration and DEV-to-PROD deployment.
 
-Created by **Rutuja Kadam | DataToCrunch**.
+Implementation and project documentation by **Isaiah Nyakundi**. Reference material: **Rutuja Kadam | DataToCrunch**.
 
 ## Project Overview
 
@@ -21,6 +21,12 @@ This project explores:
 The implementation explains the reasoning behind data-cleaning decisions, including when to standardize a value, preserve missing information or quarantine a record.
 
 ## Architecture
+
+![CFPB Consumer Complaint Analytics — original Microsoft Fabric architecture](architecture/cfpb-consumer-complaint-analytics.webp)
+
+*The original project architecture illustrates Kaggle API ingestion, Bronze and Silver processing, Gold dimensional modelling, semantic reporting, pipeline automation, DEV-to-PROD promotion, and business insights.*
+
+### Implementation-level data flow
 
 ```mermaid
 flowchart TD
@@ -295,6 +301,8 @@ Update workspace references, item identifiers, connection settings and source pa
 
 **Kaggle dataset:** Add the exact dataset URL used in the project.
 
-Author isaiah nyakundi
+## Author
 
-github viradidi
+**Isaiah Nyakundi** · [GitHub](https://github.com/viradidi)
+
+Reference material: **Rutuja Kadam | DataToCrunch**.
