@@ -1,0 +1,50 @@
+name: CFPB Repository Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.ipynb"
+      - "**/*.sql"
+      - "**/*.md"
+      - "**/*.webp"
+      - "tests/**"
+      - ".github/workflows/cfpb-validation.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "**/*.ipynb"
+      - "**/*.sql"
+      - "**/*.md"
+      - "**/*.webp"
+      - "tests/**"
+      - ".github/workflows/cfpb-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Fabric project artifacts and contracts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run repository contract tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Confirm no unresolved source placeholder remains
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -Rni --exclude-dir=.git "Add the exact dataset URL" README.md docs; then
+            echo "::error::The README still contains an unresolved dataset URL placeholder."
+            exit 1
+          fi
