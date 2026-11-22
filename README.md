@@ -291,16 +291,19 @@ See the [execution record](docs/EXECUTION_RECORD.md) for the runtime evidence re
 
 ## Reproducing the Project
 
-1. Obtain the source dataset used in the tutorial.
-2. Create the required Fabric workspace and Lakehouse.
-3. Configure the ingestion pipeline’s source connection and destination.
-4. Run ingestion and confirm that the CSV is available.
-5. Attach the Bronze-to-Silver notebook to the intended Lakehouse.
-6. Run the notebook and review validation and reconciliation results.
-7. Create the Gold Warehouse objects and loading procedure.
-8. Configure and run the end-to-end pipeline.
-9. Configure the semantic model and Power BI report.
-10. Follow the staged deployment process for a new target environment.
+1. Recover the original Kaggle dataset page/version if it is available from the original Kaggle account or download history. The committed repository does not preserve its slug or version.
+2. If the original snapshot cannot be recovered, download the current CFPB bulk CSV as a **new source version**. Record its download timestamp, SHA-256, row count and schema; do not expect the historical 903,983-row/18-column values to match.
+3. Review the current source schema against the notebook before running it. The historical transformations expect fields from the older 18-column export; update them deliberately before using a newer CFPB schema.
+4. Create the required Fabric workspace and Lakehouse.
+5. Configure the ingestion pipeline’s source connection and destination.
+6. Run ingestion and confirm that the CSV is available in Bronze.
+7. Attach the Bronze-to-Silver notebook to the intended Lakehouse, run it and review validation, quarantine and reconciliation results.
+8. Create the Gold Warehouse objects and loading procedure.
+9. Configure and run the end-to-end pipeline.
+10. Configure and refresh the semantic model and verify the three Power BI report pages.
+11. Follow the staged deployment process for a new target environment and record promotion evidence.
+
+See [data provenance and reproducibility](docs/DATA_PROVENANCE.md) and the [execution record](docs/EXECUTION_RECORD.md) before treating a new snapshot as a reproduction of the original run.
 
 Update workspace references, item identifiers, connection settings and source paths for your own environment.
 
