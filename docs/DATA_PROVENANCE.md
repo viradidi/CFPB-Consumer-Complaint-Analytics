@@ -48,6 +48,20 @@ The official CFPB bulk export is provided as the authoritative source for a fres
 
 Consequently, the transformation and modelling implementation can be inspected, but the exact original source snapshot cannot currently be fetched deterministically from the repository alone.
 
+## Creating a source snapshot manifest
+
+For any recovered historical CSV or newly downloaded CFPB snapshot, run the repository utility:
+
+```bash
+python scripts/create_source_manifest.py path/to/complaints.csv \
+  --source-url "EXACT_SOURCE_URL" \
+  --source-version "DATASET_VERSION_OR_SNAPSHOT_DATE" \
+  --downloaded-at-utc "2026-11-22T12:00:00Z" \
+  --output artifacts/source-snapshot-manifest.json
+```
+
+The utility records SHA-256, byte size, parsed CSV row count, column count and ordered column names. It uses a CSV parser, so quoted narrative fields containing commas or embedded line breaks are counted correctly. The manifest is a local evidence artifact; review it before committing, and do not include complaint narratives or other row-level data. Use the exact source URL/version and original download timestamp where known. Do not fill historical metadata with guessed values.
+
 ## Recommended provenance completion
 
 Before describing the original input as fully reproducible, recover and record:
