@@ -1,11 +1,11 @@
 # CFPB Consumer Complaint Analytics — execution record
 
 **Record prepared:** 22 November 2026  
-**Current evidence status:** NOT YET ESTABLISHED BY A DATED EXECUTION RECORD
+**Current execution status:** OWNER-CONFIRMED SUCCESSFUL FABRIC ENVIRONMENT RUN — 22 NOVEMBER 2026; RUN-SPECIFIC EVIDENCE NOT YET ATTACHED
 
-This record is intentionally a truthful evidence register, not a retrospective claim that a run occurred. The repository contains the Fabric notebook, Gold SQL assets, architecture and documentation. The README documents a 903,983-row historical source snapshot and a reconciled Silver/quarantine split. The repository does not currently retain a dated Fabric run record with workspace item IDs, pipeline run IDs, notebook outputs, table counts or DEV-to-PROD promotion evidence.
+The project owner confirms that the CFPB solution ran successfully in their Microsoft Fabric environment on 22 November 2026. This closes the previous pending run status at the owner-reported level. The repository contains the Fabric notebook, Gold SQL assets, architecture and documentation; however, the run-specific workspace/item identifiers, pipeline and notebook run IDs, source snapshot hash, Bronze/Silver/Gold counts, semantic-model and report checks, and DEV-to-PROD promotion evidence have not yet been supplied for this record.
 
-This does not prove that the project was never executed. It means that the execution history is not independently reconstructable from the committed artifacts currently available.
+The execution is therefore recorded as **owner-confirmed successful**, while independent auditability and reconstruction remain pending until sanitized run artifacts are added. Historical dataset counts in the README are not being presented as measurements from this particular run.
 
 ## 1. Implementation scope to validate
 
@@ -22,7 +22,7 @@ This does not prove that the project was never executed. It means that the execu
 | Orchestration | End-to-end Fabric Data Pipeline | Pipeline run ID, activity statuses and execution timestamp |
 | DEV-to-PROD | Fabric Deployment Pipeline | Promotion operation, target item bindings, target pipeline run and report access verification |
 
-## 2. Required evidence before marking end-to-end execution verified
+## 2. Evidence required for independent verification and audit
 
 Record the following for one coherent execution, using the same source snapshot and Fabric environment:
 
@@ -44,24 +44,24 @@ Keep raw complaint narratives and any sensitive material out of public workflow 
 
 | Field | Value |
 |---|---|
-| Repository commit SHA | Not yet recorded |
-| Execution date/time (UTC) | Not yet recorded |
-| Fabric workspace | Not yet recorded |
-| Source dataset URL/version | Not yet recorded |
-| Source file SHA-256 | Not yet recorded |
-| Source rows / columns | Historical README value: 903,983 / 18; run-specific value not recorded |
-| Bronze count | Not yet recorded |
-| Silver valid count | Historical README value: 896,931; run-specific value not recorded |
-| Quarantine count | Historical README value: 7,052; run-specific value not recorded |
-| Gold fact and dimension counts | Not yet recorded |
-| End-to-end pipeline run ID | Not yet recorded |
-| Semantic model refresh evidence | Not yet recorded |
-| Power BI report verification | Not yet recorded |
-| DEV-to-PROD promotion evidence | Not yet recorded |
-| Final operator acceptance | Pending evidence collection |
+| Repository commit SHA | Not captured with the owner-reported run |
+| Execution date/time (UTC) | 22 November 2026; exact UTC time not supplied |
+| Fabric workspace | Not supplied |
+| Source dataset URL/version | Not captured for this run; historical Kaggle slug/version remains unresolved |
+| Source file SHA-256 | Not supplied |
+| Source rows / columns | Historical README value: 903,983 / 18; run-specific values not supplied |
+| Bronze count | Not supplied |
+| Silver valid count | Historical README value: 896,931; run-specific value not supplied |
+| Quarantine count | Historical README value: 7,052; run-specific value not supplied |
+| Gold fact and dimension counts | Not supplied |
+| End-to-end pipeline run ID | Not supplied |
+| Semantic model refresh evidence | Owner reports successful Fabric environment run; refresh artifact not attached |
+| Power BI report verification | Not supplied |
+| DEV-to-PROD promotion evidence | Not supplied |
+| Final operator acceptance | Owner-confirmed successful Fabric environment run; independent evidence package pending |
 
 ## 4. Status rule
 
-Do not mark this record PASS based only on valid notebook JSON, SQL file presence, a passing GitHub Actions workflow, or the documented historical row-count arithmetic. Those checks validate repository consistency and documented expectations. End-to-end acceptance requires the actual Fabric runtime evidence listed above.
+The project is now recorded as **owner-confirmed successfully run in Microsoft Fabric** on 22 November 2026. This status is based on the project owner's direct confirmation, not on GitHub Actions or static repository checks. Do not describe the run as independently audited or fully reproducible until the actual Fabric runtime evidence listed above is attached.
 
-Update this record with the original run date and sanitized evidence if the historical execution artifacts can be recovered. Otherwise, complete it during a fresh, reproducible run and clearly label that run as a new snapshot/version.
+Add sanitized identifiers and aggregate outputs from the successful run when available. Keep raw complaint narratives and sensitive source content out of public evidence artifacts. If the original source snapshot cannot be identified, retain the existing provenance limitation and clearly label any future reproduction using a new source snapshot/version.
