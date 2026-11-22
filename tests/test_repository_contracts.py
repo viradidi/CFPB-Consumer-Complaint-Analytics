@@ -74,7 +74,7 @@ class RepositoryContractTests(unittest.TestCase):
         readme = README.read_text(encoding="utf-8")
         provenance = (ROOT / "docs" / "DATA_PROVENANCE.md").read_text(encoding="utf-8")
         self.assertIn("https://www.consumerfinance.gov/data-research/consumer-complaints/", provenance)
-        self.assertIn("exact Kaggle dataset", provenance.lower())
+        self.assertIn("exact kaggle dataset", provenance.lower())
         self.assertNotIn("Add the exact dataset URL", readme)
         self.assertIn("docs/DATA_PROVENANCE.md", readme)
 
