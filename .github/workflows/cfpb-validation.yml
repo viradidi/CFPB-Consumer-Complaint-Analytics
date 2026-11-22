@@ -9,6 +9,7 @@ on:
       - "**/*.md"
       - "**/*.webp"
       - "tests/**"
+      - "scripts/**"
       - ".github/workflows/cfpb-validation.yml"
   pull_request:
     branches: [main]
