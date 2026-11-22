@@ -6,6 +6,8 @@ The project follows the complete journey from raw CSV ingestion to a Power BI re
 
 Implementation and project documentation by **Isaiah Nyakundi**. Reference material: **Rutuja Kadam | DataToCrunch**.
 
+> **Execution status — completed (owner-confirmed):** The project owner confirms a successful Microsoft Fabric environment run on 22 November 2026. Run-specific Fabric IDs, source snapshot hash, Bronze/Silver/Gold counts, semantic-model/report checks and promotion artifacts have not yet been added to this repository. The runtime is owner-confirmed; the evidence package is not yet independently auditable.
+
 ## Project Overview
 
 Consumer complaints provide insight into the financial products, issues and company responses that consumers report.
@@ -319,7 +321,7 @@ Update workspace references, item identifiers, connection settings and source pa
 
 ## Execution evidence
 
-The repository includes an [execution record](docs/EXECUTION_RECORD.md) that distinguishes implementation assets and documented historical counts from dated Fabric runtime evidence. Complete it with actual pipeline/notebook run IDs, source and Gold counts, semantic model/report verification and DEV-to-PROD promotion evidence. Do not treat a passing repository CI workflow as proof of a live Fabric run.
+The project owner confirms that the Fabric environment ran successfully on 22 November 2026. This updates the prior pending run status to **completed (owner-confirmed)**. The [execution record](docs/EXECUTION_RECORD.md) captures this result and distinguishes it from independent verification: the run-specific pipeline/notebook IDs, source hash, Bronze/Silver/Gold counts, semantic-model/report checks and DEV-to-PROD promotion artifacts have not yet been attached. GitHub repository CI remains static validation and is not evidence of a live Fabric run.
 
 ## Author
 
