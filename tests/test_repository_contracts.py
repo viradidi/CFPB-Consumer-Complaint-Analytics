@@ -79,10 +79,12 @@ class RepositoryContractTests(unittest.TestCase):
         self.assertNotIn("Add the exact dataset URL", readme)
         self.assertIn("docs/DATA_PROVENANCE.md", readme)
 
-    def test_execution_record_does_not_claim_unrecorded_runtime_success(self):
+    def test_execution_record_distinguishes_owner_confirmation_from_auditable_evidence(self):
         execution = (ROOT / "docs" / "EXECUTION_RECORD.md").read_text(encoding="utf-8")
-        self.assertIn("NOT YET ESTABLISHED BY A DATED EXECUTION RECORD", execution)
-        self.assertIn("Do not mark this record PASS", execution)
+        self.assertIn("OWNER-CONFIRMED SUCCESSFUL FABRIC ENVIRONMENT RUN", execution)
+        self.assertIn("owner-confirmed successful", execution.lower())
+        self.assertIn("independent auditability", execution.lower())
+        self.assertIn("Not supplied", execution)
 
 
 if __name__ == "__main__":
