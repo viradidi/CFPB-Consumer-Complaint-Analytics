@@ -62,16 +62,22 @@ Fabric deployment pipelines support promotion from Development to Production.
 
 ## Dataset
 
-The project uses a historical CFPB consumer complaint dataset retrieved from Kaggle.
+The project uses a historical CFPB consumer complaint snapshot that was retrieved through Kaggle.
 
 - **Source records:** 903,983
 - **Source columns:** 18
 - **Cleaned Silver records:** 896,931
 - **Quarantined records:** 7,052
 
-The Consumer Financial Protection Bureau (CFPB) is the original source of the complaint information.
+The Silver and quarantine counts reconcile to the source snapshot:
 
-These counts describe the dataset snapshot used in this project. A different download may contain different records.
+`896,931 + 7,052 = 903,983`
+
+### Snapshot provenance and reproducibility
+
+The exact Kaggle dataset slug and version used for this historical snapshot were not retained in the committed repository. We therefore do not guess or attribute the data to a Kaggle page that may not be the one originally used. The underlying authoritative source is the [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/). Its [current bulk CSV export](https://files.consumerfinance.gov/ccdb/complaints.csv.zip) is useful for a fresh reproduction, but it is a changing source and is not guaranteed to reproduce this historical 903,983-row, 18-column snapshot.
+
+The CFPB has also changed its published schema over time. A fresh download can differ in both row count and available columns. See [data provenance and version limitations](docs/DATA_PROVENANCE.md) before replacing the original snapshot.
 
 ## Bronze Layer
 
@@ -273,11 +279,15 @@ This sequence establishes the Silver dependency referenced by the Gold-loading p
 
 Later deployments should also account for any newly introduced dependencies.
 
-### CI/CD Scope
+### CI and deployment scope
 
-This project demonstrates manually triggered DEV-to-PROD promotion using deployment pipelines.
+The repository now includes a GitHub Actions validation workflow that runs on relevant pushes and pull requests. It checks notebook JSON structure, the presence of code cells, Gold SQL object contracts, the architecture asset, documented source reconciliation and provenance disclosures.
 
-It does not implement a complete Git-triggered build, automated test and deployment workflow.
+This is **repository CI**, not a Fabric integration test or a deployment. It does not execute the notebook, create Warehouse objects, refresh the semantic model, render the Power BI report or provision Fabric resources.
+
+DEV-to-PROD promotion remains manually triggered through Microsoft Fabric Deployment Pipelines. The two stages and their target bindings must be verified in Fabric after promotion. This is staged promotion, not Git-triggered continuous deployment.
+
+See the [execution record](docs/EXECUTION_RECORD.md) for the runtime evidence required before recording an end-to-end release as independently verifiable.
 
 ## Reproducing the Project
 
@@ -297,9 +307,16 @@ Update workspace references, item identifiers, connection settings and source pa
 ## References
 
 - [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/)
+- [CFPB current bulk CSV export](https://files.consumerfinance.gov/ccdb/complaints.csv.zip)
+- [CFPB Consumer Complaint Database API release notes](https://cfpb.github.io/api/ccdb/release-notes.html)
+- [CFPB field reference](https://cfpb.github.io/api/ccdb/fields.html)
 - [CFPB April 2017 Product and Sub-product Changes](https://files.consumerfinance.gov/f/documents/201704_cfpb_Summary_of_Product_and_Sub-product_Changes.pdf)
 
-**Kaggle dataset:** Add the exact dataset URL used in the project.
+**Original Kaggle dataset page/version:** Not retained in the committed project artifacts. The exact Kaggle slug is documented as unresolved in [DATA_PROVENANCE.md](docs/DATA_PROVENANCE.md); no unverified Kaggle URL is presented as the source used.
+
+## Execution evidence
+
+The repository includes an [execution record](docs/EXECUTION_RECORD.md) that distinguishes implementation assets and documented historical counts from dated Fabric runtime evidence. Complete it with actual pipeline/notebook run IDs, source and Gold counts, semantic model/report verification and DEV-to-PROD promotion evidence. Do not treat a passing repository CI workflow as proof of a live Fabric run.
 
 ## Author
 
