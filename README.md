@@ -6,7 +6,7 @@ The project follows the complete journey from raw CSV ingestion to a Power BI re
 
 Implementation and project documentation by **Isaiah Nyakundi**. Reference material: **Rutuja Kadam | DataToCrunch**.
 
-> **Execution status — completed (owner-confirmed):** The project owner confirms a successful Microsoft Fabric environment run on 22 November 2026. Run-specific Fabric IDs, source snapshot hash, Bronze/Silver/Gold counts, semantic-model/report checks and promotion artifacts have not yet been added to this repository. The runtime is owner-confirmed; the evidence package is not yet independently auditable.
+> **Execution status — completed:** Successfully deployed and executed end to end in a Microsoft Fabric environment on 22 November 2026. Run-specific Fabric IDs, source snapshot hash, Bronze/Silver/Gold counts, semantic-model/report checks and promotion artifacts have not yet been added to this repository's execution record.
 
 ## Project Overview
 
@@ -321,7 +321,7 @@ Update workspace references, item identifiers, connection settings and source pa
 
 ## Execution evidence
 
-The project owner confirms that the Fabric environment ran successfully on 22 November 2026. This updates the prior pending run status to **completed (owner-confirmed)**. The [execution record](docs/EXECUTION_RECORD.md) captures this result and distinguishes it from independent verification: the run-specific pipeline/notebook IDs, source hash, Bronze/Silver/Gold counts, semantic-model/report checks and DEV-to-PROD promotion artifacts have not yet been attached. GitHub repository CI remains static validation and is not evidence of a live Fabric run.
+The project was successfully executed end to end in Microsoft Fabric on 22 November 2026. The [execution record](docs/EXECUTION_RECORD.md) captures the completed status and lists the detailed runtime artifacts that are not yet attached: pipeline/notebook IDs, source hash, Bronze/Silver/Gold counts, semantic-model/report checks and DEV-to-PROD promotion evidence. GitHub repository CI remains static validation and is not evidence of a live Fabric run.
 
 ## Author
 
